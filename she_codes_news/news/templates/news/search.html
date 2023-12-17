@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Search</h2>
+<form action="{% url 'news:search' %}" method="get">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="text" name="q" placeholder="Search...">
+    <input type="submit" value="Search">
+</form>
+
+{% if stories %}
+<ul>
+    {% for story in stories %}
+        <h2> {{story.title}} </h2>
+        <p> Content: {{story.content}} </p>
+        <p> Authored by: {{story.author}} </p>
+        <p> Published on: {{story.pub_date}} </p>
+        <p> Category:  {{ story.get_category_display }}</p>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>No stories found.</p>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+    

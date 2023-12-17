@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block stylesheets %}
+<link rel="stylesheet"  type="text/css" href="{% static 'news/styles.css' %}"/>
+{% endblock %}
+{% block content %}
+<section>
+<h1>Profile</h1>
+<p>Are you sure you want to delete your profile?</p>
+<form method="post">
+{% csrf_token %}
+<button type="submit">Delete Profile</button>
+</form>
+</section>
+{% endblock %}
+

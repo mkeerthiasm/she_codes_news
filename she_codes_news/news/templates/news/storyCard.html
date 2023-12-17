@@ -6,8 +6,13 @@
             <img src="https://picsum.photos/600">
         {% endif %}
         <div class="story-card-text">
-            <h3>{{ story.title }}</h3>
-            <h4>{{ story.author }}</h4>
+            <h3>{{ story.title }} 
+                {% if request.user.is_authenticate %} <a href="{% url 'news:updateStory' story.id %}"><small>Edit </small></a>
+                 <a href="{% url 'news:deleteStory' story.id %}"> <small>Delete</small></a>  
+                 {% endif %}
+                </h3>
+                <h4> {{story.get_category_display}} </h4>
+            <h4><small>Authored by</small> <a class="link" href="{% url 'news:authorSearch' story.author %}"> {{story.author}} </a></h4>
             <h4>{{ story.pub_date }}</h4>
         </div>
     </a>

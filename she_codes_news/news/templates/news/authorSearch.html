@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}"/>
+{% endblock %}
+{% block content %}
+<h1>Authored by {{author.username}}</h1>
+{% if all_stories %}
+    <ul>
+        {% for story in all_stories %}
+            {% include './storyCard.html' story=story %}
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No stories found.</p>
+{% endif %}
+{% endblock %}
