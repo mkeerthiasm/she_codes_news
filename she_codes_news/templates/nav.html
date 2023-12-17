@@ -1,5 +1,5 @@
 <nav>
-    <!-- <a href="{% url 'news:index' %}">Home</a> -->
+    <a href="{% url 'news:index' %}">Home</a>
     {% if request.user.is_authenticated %}
      <ul>
         <li><a href="#"> Welcome, {{user.username}} </a></li>
@@ -13,6 +13,7 @@
     {% else %}  
      <ul>
         <li><a href="{% url 'news:index' %}">Home</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
         <li><a href="{% url 'news:createAccount' %}">Create Account</a></li>
     </ul>
     {% endif %}  
