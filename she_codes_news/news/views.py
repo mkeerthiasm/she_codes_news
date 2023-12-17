@@ -4,10 +4,12 @@ from django.db.models import Q
 # from django.contrib.auth.models import get_user_model
 from django.views import generic
 from django.urls import reverse_lazy
-from .models import NewsStory, StoryCategory
+from .models import NewsStory
 from .forms import StoryForm, CommentForm
 from .forms import CustomUserCreationForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth import get_user_model
+# from . users import SearchAuthorView
 
 
 class CreateAccountView (generic.CreateView):
@@ -84,7 +86,7 @@ class AddCommentView(generic.CreateView):
 class CategoryView(generic.ListView):
     template_name = 'news'
     context_object_name = 'category'
-    model = StoryCategory
+    model = NewsStory
 
     def get_queryset(self):
         return StoryCategory.objects.filter(category=self.kwargs['category'])
